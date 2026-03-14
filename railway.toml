@@ -2,4 +2,4 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "cd backend && ./mvnw -DskipTests spring-boot:run"
+startCommand = "./mvnw -DskipTests package && java -jar target/*.jar"
