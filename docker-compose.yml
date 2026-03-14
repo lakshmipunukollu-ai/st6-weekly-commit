@@ -15,23 +15,23 @@ services:
   backend:
     build: ./backend
     ports:
-      - "8080:8080"
+      - "8081:8081"
     environment:
       DB_URL: jdbc:postgresql://db:5432/st6_weekly_commit
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
       JWT_SECRET: st6-weekly-commit-secret-key-for-jwt-tokens-must-be-256-bits-long
-      SERVER_PORT: 8080
-      CORS_ORIGINS: http://localhost:5173,http://localhost:3000
+      PORT: 8081
+      CORS_ORIGINS: http://localhost:5005,http://localhost:5173,http://localhost:3000
     depends_on:
       - db
 
   frontend:
     build: ./frontend
     ports:
-      - "5173:5173"
+      - "5005:5005"
     environment:
-      VITE_API_URL: http://localhost:8080
+      VITE_API_URL: http://localhost:8081
     depends_on:
       - backend
 
