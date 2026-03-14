@@ -3,7 +3,9 @@ export JAVA_HOME := /opt/homebrew/Cellar/openjdk@21/21.0.10/libexec/openjdk.jdk/
 .PHONY: dev test seed build clean
 
 dev:
-	docker-compose up --build
+	@echo "Starting backend on port 8081 and frontend on port 5005..."
+	cd backend && ./mvnw spring-boot:run &
+	cd frontend && npm run dev
 
 test:
 	cd backend && ./mvnw test -Dspring.profiles.active=test
